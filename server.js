@@ -8,6 +8,10 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('API Estudiantes funcionando 🚀');
+});
+
 app.use('/api/estudiantes', estudiantesRoutes);
 app.use('/api/users', userRoutes);
 
