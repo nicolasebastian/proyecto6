@@ -9,11 +9,19 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('API Estudiantes funcionando 🚀');
+  res.send('<h1>API Estudiantes funcionando 🚀</h1>');
+});
+
+app.get('/ping', (req, res) => {
+  res.json({ message: 'pong' });
 });
 
 app.use('/api/estudiantes', estudiantesRoutes);
 app.use('/api/users', userRoutes);
+
+app.use((req, res) => {
+  res.status(404).json({ error: 'Ruta no encontrada' });
+});
 
 const PORT = process.env.PORT || 3000;
 
